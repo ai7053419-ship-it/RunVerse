@@ -1,0 +1,557 @@
+<link rel="stylesheet" href="style.css">
+<div class="game-container">
+<main>
+  <!-- GAME CANVAS -->
+
+<canvas id="game" width="960" height="540"></canvas>
+  
+<!-- MAIN MENU -->
+
+<section id="main-menu" class="screen main-menu-screen">
+
+  <div class="main-menu-content">
+
+    <!-- GAME LOGO -->
+    <div class="game-logo">
+      <h1>RUNVERSE</h1>
+      <p>THE ENDLESS ADVENTURE</p>
+    </div>
+
+    <!-- PLAYER LEVEL -->
+    <div class="player-level-box">
+
+      <div class="level-info">
+        <span>⭐ LEVEL</span>
+        <strong id="player-level">1</strong>
+      </div>
+
+      <div class="xp-info">
+        <span>XP PROGRESS</span>
+        <span id="xp-text">0 / 100 XP</span>
+      </div>
+
+      <div class="xp-bar">
+        <div id="xp-fill"></div>
+      </div>
+
+    </div>
+
+    <!-- COINS AND BEST SCORE -->
+    <div class="corner-stats">
+
+      <div class="coin-corner">
+        🪙 <span id="coin-total">0</span>
+      </div>
+
+      <div class="best-corner">
+        🏆 BEST: <span id="best-total">0</span>
+      </div>
+
+    </div>
+
+    <!-- MENU BUTTONS -->
+    <div class="main-menu-buttons">
+
+      <div class="menu-left-actions">
+
+        <button class="menu-category-btn"
+          onclick="openRunversePage('adventure-menu')">
+          🌍 ADVENTURE
+        </button>
+
+        <button class="menu-category-btn"
+          onclick="openRunversePage('store-menu')">
+          🛒 STORE
+        </button>
+
+        <button class="menu-category-btn"
+          onclick="openRunversePage('extras-menu')">
+          ⭐ EXTRAS
+        </button>
+
+      </div>
+
+      <div class="menu-right-actions">
+
+        <button id="maps-btn" class="menu-maps-btn">
+          🌍 MAPS
+        </button>
+
+        <button id="play-btn" class="menu-play-btn">
+          ▶ PLAY
+        </button>
+
+      </div>
+
+    </div>
+
+    <p class="menu-version">RUNVERSE • VERSION 1.0</p>
+
+  </div>
+</section>
+
+<!-- ADVENTURE MENU -->
+<section id="adventure-menu" class="screen hidden category-screen">
+
+  <h2>🌍 ADVENTURE</h2>
+  <p>Choose your adventure</p>
+
+  <div class="category-page-buttons">
+
+    <button id="adventure-maps-btn"
+      class="menu-option-btn"
+      onclick="openRunversePage('maps-screen')">
+      🌍 MAPS
+    </button>
+
+    <button id="characters-btn" class="menu-option-btn">
+      🏃 CHARACTERS
+    </button>
+
+  </div>
+
+  <button class="category-back-btn"
+    onclick="openRunversePage('main-menu')">
+    ← MAIN MENU
+  </button>
+
+</section>
+
+
+<!-- STORE MENU -->
+<section id="store-menu" class="screen hidden category-screen">
+
+  <h2>🛒 STORE</h2>
+  <p>Upgrade your running experience</p>
+
+  <div class="category-page-buttons">
+
+    <button id="shop-btn" class="menu-option-btn">
+      🛒 SHOP & UPGRADES
+    </button>
+
+  </div>
+
+  <button class="category-back-btn"
+    onclick="openRunversePage('main-menu')">
+    ← MAIN MENU
+  </button>
+
+</section>
+
+
+<!-- EXTRAS MENU -->
+<section id="extras-menu" class="screen hidden category-screen">
+
+  <h2>⭐ EXTRAS</h2>
+  <p>More rewards and challenges</p>
+
+  <div class="category-page-buttons">
+
+    <button id="daily-rewards-btn" class="menu-option-btn">
+      🎁 DAILY REWARDS
+    </button>
+
+    <button id="achievements-btn" class="menu-option-btn">
+      🏆 ACHIEVEMENTS
+    </button>
+
+    <button id="settings-btn" class="menu-option-btn">
+      ⚙ SETTINGS
+    </button>
+
+  </div>
+
+  <button class="category-back-btn"
+    onclick="openRunversePage('main-menu')">
+    ← MAIN MENU
+  </button>
+
+</section>
+    
+    <!-- ACHIEVEMENTS SCREEN -->
+<section id="achievements-screen" class="screen hidden">
+
+  <h2>🏆 ACHIEVEMENTS</h2>
+  <p>Complete challenges and earn rewards!</p>
+
+  <div class="achievements-grid">
+
+    <div class="achievement-card" id="achievement-first">
+      <div class="achievement-icon">🏃</div>
+      <h3>FIRST RUN</h3>
+      <p>Complete your first run</p>
+      <div class="achievement-progress">0 / 1</div>
+      <button class="achievement-claim-btn" data-achievement="first">100 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-coins">
+      <div class="achievement-icon">🪙</div>
+      <h3>COIN COLLECTOR</h3>
+      <p>Collect 50 coins in one run</p>
+      <div class="achievement-progress">0 / 50</div>
+      <button class="achievement-claim-btn" data-achievement="coins">150 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-speed">
+      <div class="achievement-icon">⚡</div>
+      <h3>SPEED DEMON</h3>
+      <p>Reach 1000 score</p>
+      <div class="achievement-progress">0 / 1000</div>
+      <button class="achievement-claim-btn" data-achievement="speed">200 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-legend">
+      <div class="achievement-icon">👑</div>
+      <h3>LEGEND</h3>
+      <p>Reach 5000 score</p>
+      <div class="achievement-progress">0 / 5000</div>
+      <button class="achievement-claim-btn" data-achievement="legend">500 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-survivor">
+      <div class="achievement-icon">❤️</div>
+      <h3>SURVIVOR</h3>
+      <p>Collect 10 coins in one run</p>
+      <div class="achievement-progress">0 / 10</div>
+      <button class="achievement-claim-btn" data-achievement="survivor">100 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-rich">
+      <div class="achievement-icon">💰</div>
+      <h3>RICH RUNNER</h3>
+      <p>Own 2000 coins</p>
+      <div class="achievement-progress">0 / 2000</div>
+      <button class="achievement-claim-btn" data-achievement="rich">300 COINS</button>
+    </div>
+
+    <div class="achievement-card" id="achievement-master">
+      <div class="achievement-icon">🏆</div>
+      <h3>MASTER RUNNER</h3>
+      <p>Reach 10000 score</p>
+      <div class="achievement-progress">0 / 10000</div>
+      <button class="achievement-claim-btn" data-achievement="master">700 COINS</button>
+    </div>
+
+  </div>
+
+  <p id="achievement-message"></p>
+
+  <button id="achievements-back-btn">
+    ← BACK
+  </button>
+
+</section>
+<!-- DAILY REWARDS SCREEN -->
+<section id="daily-rewards-screen" class="screen hidden">
+
+  <h2>🎁 DAILY REWARDS</h2>
+
+  <p>Claim your daily coins!</p>
+
+  <div class="daily-rewards-grid">
+
+    <div class="daily-reward-card">
+      <h3>DAY 1</h3>
+      <div>🪙 100</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 2</h3>
+      <div>🪙 150</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 3</h3>
+      <div>🪙 200</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 4</h3>
+      <div>🪙 250</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 5</h3>
+      <div>🪙 300</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 6</h3>
+      <div>🪙 400</div>
+    </div>
+
+    <div class="daily-reward-card">
+      <h3>DAY 7</h3>
+      <div>🪙 700</div>
+    </div>
+
+  </div>
+
+  <p id="daily-reward-message"></p>
+
+  <button id="claim-reward-btn">
+    🎁 CLAIM REWARD
+  </button>
+
+  <button id="daily-rewards-back-btn">
+    ← BACK
+  </button>
+
+</section>
+
+    <!-- CHARACTER SELECTION -->
+    <section id="characters-screen" class="screen hidden">
+      <h2>CHOOSE YOUR CHARACTER</h2>
+
+      <div class="character-list">
+
+        <div class="character-card">
+          <div class="character-preview">🏃</div>
+          <h3>RUNNER</h3>
+          <p>FREE</p>
+          <button class="character-select-btn" data-character="runner">
+            SELECT
+          </button>
+        </div>
+
+        <div class="character-card">
+          <div class="character-preview">🦸</div>
+          <h3>HERO</h3>
+          <p>500 COINS</p>
+          <button class="character-select-btn" data-character="hero">
+            UNLOCK
+          </button>
+        </div>
+
+        <div class="character-card">
+          <div class="character-preview">🥷</div>
+          <h3>NINJA</h3>
+          <p>1000 COINS</p>
+          <button class="character-select-btn" data-character="ninja">
+            UNLOCK
+          </button>
+        </div>
+
+      </div>
+
+      <button id="characters-back-btn">BACK</button>
+    </section>
+
+    <!-- MAP SELECTION SCREEN -->
+<section id="maps-screen" class="screen hidden">
+
+  <h2>SELECT YOUR MAP</h2>
+<p id="map-message"></p>
+  <div class="map-items">
+
+    <div class="map-card">
+      <div class="map-icon">🏙️</div>
+      <h3>CITY</h3>
+      <p>Modern City Adventure</p>
+      <button class="map-select-btn" data-map="city">
+        PLAY - FREE
+      </button>
+    </div>
+
+    <div class="map-card">
+      <div class="map-icon">🌴</div>
+      <h3>JUNGLE</h3>
+      <p>Wild Forest Adventure</p>
+      <button class="map-select-btn" data-map="jungle">
+        UNLOCK - 500
+      </button>
+    </div>
+
+    <div class="map-card">
+      <div class="map-icon">🏜️</div>
+      <h3>DESERT</h3>
+      <p>Desert Adventure</p>
+      <button class="map-select-btn" data-map="desert">
+        UNLOCK - 1000
+      </button>
+    </div>
+
+    <div class="map-card">
+      <div class="map-icon">🚀</div>
+      <h3>SPACE</h3>
+      <p>Galaxy Adventure</p>
+      <button class="map-select-btn" data-map="space">
+        UNLOCK - 2000
+      </button>
+    </div>
+
+  </div>
+
+  <button id="maps-back-btn">BACK</button>
+
+</section>
+    
+
+<!-- SHOP SCREEN -->
+<section id="shop-screen" class="screen hidden">
+
+  <h2>RUNVERSE SHOP</h2>
+
+  <div class="shop-balance">
+    🪙 YOUR COINS: <span id="shop-coins">0</span>
+  </div>
+
+  <p id="shop-message"></p>
+
+  <!-- CHARACTER SHOP -->
+  <h3 class="shop-section-title">🏃 CHARACTER SHOP</h3>
+
+  <div class="shop-items">
+
+    <div class="shop-card">
+      <div class="shop-icon">🏃</div>
+      <h3>RUNNER</h3>
+      <p>Default Character</p>
+      <button class="shop-buy-btn" data-character="runner">
+        FREE
+      </button>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-icon">🦸</div>
+      <h3>HERO</h3>
+      <p>Price: 500 Coins</p>
+      <button class="shop-buy-btn" data-character="hero">
+        BUY - 500
+      </button>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-icon">🥷</div>
+      <h3>NINJA</h3>
+      <p>Price: 1000 Coins</p>
+      <button class="shop-buy-btn" data-character="ninja">
+        BUY - 1000
+      </button>
+    </div>
+
+  </div>
+
+  <!-- UPGRADES SHOP -->
+  <h3 class="shop-section-title">⚡ UPGRADES</h3>
+
+  <div class="shop-items">
+
+    <div class="shop-card">
+      <div class="shop-icon">🛡️</div>
+      <h3>SHIELD BOOST</h3>
+      <p>Increase shield duration</p>
+      <p>Price: 300 Coins</p>
+      <button class="shop-upgrade-btn" data-upgrade="shield">
+        BUY - 300
+      </button>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-icon">🧲</div>
+      <h3>COIN MAGNET</h3>
+      <p>Attract nearby coins</p>
+      <p>Price: 500 Coins</p>
+      <button class="shop-upgrade-btn" data-upgrade="magnet">
+        BUY - 500
+      </button>
+    </div>
+
+    <div class="shop-card">
+      <div class="shop-icon">💰</div>
+      <h3>COIN BONUS</h3>
+      <p>Earn extra coins per run</p>
+      <p>Price: 700 Coins</p>
+      <button class="shop-upgrade-btn" data-upgrade="bonus">
+        BUY - 700
+      </button>
+    </div>
+
+  </div>
+
+  <button id="shop-back-btn">BACK</button>
+
+</section>
+
+
+
+    <!-- SETTINGS SCREEN -->
+    
+<section id="settings-screen" class="screen hidden">
+  <h2>SETTINGS</h2>
+  <p>Customize your game experience</p>
+
+  <div class="settings-options">
+
+    <label class="setting-option">
+      <span>Sound Effects</span>
+      <input type="checkbox" id="sound-toggle" checked>
+    </label>
+
+    <label class="setting-option">
+      <span>Background Music</span>
+      <input type="checkbox" id="music-toggle" checked>
+    </label>
+
+    <label class="setting-option">
+      <span>Vibration</span>
+      <input type="checkbox" id="vibration-toggle" checked>
+    </label>
+
+  </div>
+
+  <button id="settings-back-btn">BACK</button>
+</section>
+
+
+    <!-- GAME HUD -->
+    <section id="hud" class="hidden">
+      <div class="hud-stats">
+        <p>SCORE: <span id="score">0</span></p>
+        <p>COINS: <span id="run-coins">0</span></p>
+      </div>
+
+      <button id="pause-btn">PAUSE</button>
+    </section>
+
+    <!-- PAUSE SCREEN -->
+    <section id="pause-screen" class="screen hidden">
+      <h2>PAUSED</h2>
+      <button id="resume-btn">RESUME</button>
+      <button id="pause-home-btn">HOME</button>
+    </section>
+
+    <!-- GAME OVER -->
+    <section id="game-over" class="screen hidden">
+      <h2>GAME OVER</h2>
+
+      <p>FINAL SCORE: <span id="final-score">0</span></p>
+      <p>COINS COLLECTED: <span id="final-coins">0</span></p>
+
+      <button id="restart-btn">PLAY AGAIN</button>
+      <button id="over-home-btn">HOME</button>
+    </section>
+
+    <!-- GAME CONTROLS -->
+    <div id="controls" class="hidden">
+
+      <button id="slide-btn" class="control-btn slide-btn">
+        SLIDE
+      </button>
+
+      <button id="jump-btn" class="control-btn jump-btn">
+        JUMP
+      </button>
+
+    </div>
+
+  </main>
+
+  <footer>
+    RUNVERSE · ENDLESS RUNNER
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
