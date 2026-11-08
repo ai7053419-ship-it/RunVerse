@@ -1,4 +1,17 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0785ed">
+  <meta name="description" content="RUNVERSE - The Endless Adventure">
+  <title>RUNVERSE - The Endless Adventure</title>
+
+  <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+</head>
+
+<body>
 <div class="game-container">
 <main>
   <!-- GAME CANVAS -->
@@ -555,3 +568,15 @@
 </div>
 
 <script src="script.js"></script>
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("RUNVERSE PWA ready!"))
+      .catch(error => console.error("PWA error:", error));
+  });
+}
+</script>
+
+</body>
+</html>
