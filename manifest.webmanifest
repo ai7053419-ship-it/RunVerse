@@ -1,0 +1,25 @@
+{
+  "name": "RUNVERSE - The Endless Adventure",
+  "short_name": "RUNVERSE",
+  "description": "An exciting endless runner adventure game.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0785ed",
+  "theme_color": "#0785ed",
+  "icons": [
+    {
+      "src": "./runverse-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./runverse-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
